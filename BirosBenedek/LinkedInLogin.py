@@ -1,4 +1,9 @@
 
+# Profil felhasználóneve
+username = "bcebitclub@gmail.com"
+# Profil jelszava
+password = "AsD1AsD2?"
+
 import time
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -17,8 +22,6 @@ actions.perform()
 time.sleep(2)
 
 # adatok beírása
-username = "bcebitclub@gmail.com"
-password = "AsD1AsD2?"
 username_input = driver.find_element_by_id("username")
 password_input = driver.find_element_by_id("password")
 username_input.clear()
