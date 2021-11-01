@@ -1,9 +1,8 @@
-
 from os import listdir
 from os.path import isfile, join
 
 # lists mappának az elérési útja
-PATH = "C:\lists\\"
+PATH = "lists"
 
 # lista a fileokkal
 onlyfiles = [f for f in listdir(PATH) if isfile(join(PATH, f))]
