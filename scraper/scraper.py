@@ -32,8 +32,10 @@ def login(username, password, driver):
     actions.click(sing_in_button)
     actions.perform()
 
+# bejelentkezés
 driver = webdriver.Chrome("C:\Program Files (x86)\chromedriver.exe")
 login("bcebitclub@gmail.com", "AsD1AsD2?", driver)
+
 
 # lists mappának az elérési útja
 PATH = "lists"
@@ -45,13 +47,10 @@ txt_files = [f for f in listdir(PATH) if isfile(join(PATH, f))]
 for file in txt_files:
     open_file = open(PATH + "\\" + file, 'r', encoding='utf-8')
 
-    # feldolgozás alatt álló linkek
     linkedIn_links = [line.strip().split() for line in open_file]
 
     for link in linkedIn_links:
         driver.get(link[0])
-
-
 
     open_file.close()
 
