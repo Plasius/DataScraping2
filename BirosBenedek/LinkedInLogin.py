@@ -36,3 +36,5 @@ sing_in_button = driver.find_element_by_class_name("btn__primary--large")
 actions.click(sing_in_button)
 actions.perform()
 
+driver.get('https://hu.linkedin.com/in/izsak-attila?')
+
