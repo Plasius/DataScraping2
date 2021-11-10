@@ -33,7 +33,7 @@ def login(username, password, driver):
     actions.perform()
 
 # bejelentkezés
-driver = webdriver.Chrome("C:\Program Files (x86)\chromedriver.exe")
+driver = webdriver.Chrome("chromedriver.exe")
 login("bcebitclub@gmail.com", "AsD1AsD2?", driver)
 
 
