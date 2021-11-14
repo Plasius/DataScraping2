@@ -1,7 +1,9 @@
 # login imports
 import time
 from selenium import webdriver
+from selenium.webdriver.chrome import service
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.service import Service
 # txt imports
 from os import listdir
 from os.path import isfile, join
@@ -33,8 +35,8 @@ def login(username, password, driver):
     actions.perform()
 
 # bejelentkezés
-driver = webdriver.Chrome("chromedriver.exe")
-login("bcebitclub@gmail.com", "AsD1AsD2?", driver)
+driver = webdriver.Chrome(service=Service("chromedriver.exe"))
+login("BARMIMAST", "KERLEK", driver)
 
 
 # lists mappának az elérési útja
@@ -51,6 +53,8 @@ for file in txt_files:
 
     for link in linkedIn_links:
         driver.get(link[0])
+        time.sleep(2)
+
 
     open_file.close()
 
