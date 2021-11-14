@@ -6,7 +6,12 @@ i = 0
 profs = []
 
 while i < 10:  # pelda miatt 10 profil
-    profs.append(profile.Profile("a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a"))  # random adatok
+    prof = profile.Profile()
+    prof.name = 'hey'+str(i)
+    prof.exp_name = 'exp'+str(i)
+    prof.study_name = 'study'+str(i)
+    prof.cert_name = 'cert'+str(i)
+    profs.append(prof) 
     i += 1
 
 with open(fileName, "w", encoding="utf-8") as f:
