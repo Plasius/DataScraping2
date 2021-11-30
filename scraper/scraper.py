@@ -43,6 +43,7 @@ def kinyeres(string, by):
 
 def login(username, password, driver):
     driver.get("https://www.linkedin.com/")
+    time.sleep(2)
     actions = ActionChains(driver)
 
     # login gombra kattintás
@@ -68,10 +69,7 @@ def login(username, password, driver):
     actions.perform()
 
 def export(profiles, fileName, header):
-    #"data.csv"
-    #"Név,Pozició,Tapasztalat,Cég,Kezdés,Vég,Szak,Egyetem,Kezdés,Vég,Oklevél,Kiállító,Dátum\n"
-
-    with open(fileName, "w", encoding="utf-8-sig") as f:
+    with open('output'+'\\'+fileName, "w", encoding="utf-8-sig") as f:
         f.write(header)
         for prof in profiles:
             f.write(str(prof)+'\n')
@@ -79,11 +77,14 @@ def export(profiles, fileName, header):
 # bejelentkezés
 driver = webdriver.Chrome(service=Service("chromedriver.exe"))
 driver.maximize_window()
-login("bilebe2446@terasd.com", "azsxdcfv", driver)
+
+
+with open('fake_account.txt', 'r') as login_file:
+    login(login_file.read(), login_file.read(), driver)
 
 
 # lists mappának az elérési útja
-PATH = "liststest"
+PATH = "lists"
 
 # lista a fileokkal
 txt_files = [f for f in listdir(PATH) if isfile(join(PATH, f))]
@@ -99,7 +100,7 @@ for file in txt_files:
     for link in linkedIn_links:
         driver.get(link)
 
-        time.sleep(3)
+        time.sleep(2)
         try:
             name = kinyeres(namePath, by="xpath")
         except:
@@ -193,4 +194,4 @@ for file in txt_files:
         profiles.append(profil)
 
     open_file.close()
-    export(profiles, file[:-4]+'.csv', "name,position,exp_name,exp_company,exp_start_date,exp_end_date,study_name,study_institution,study_start_date,study_end_date,cert_name,cert_institution,cert_issued,cert_expires\n")
+    export(profiles, file[:-4]+'.csv', 'Név,Pozició,Tapasztalat,Cég,Kezdés,Vég,Szak,Egyetem,Kezdés,Vég,Oklevél,Kiállító,Dátum\n')
