@@ -67,7 +67,7 @@ for file in txt_files:
 
     for link in urls:
         driver.get(link)
-        time.sleep(5)
+        time.sleep(11)
 
         try:
             name = kinyeres('text-heading-xlarge', by='class')
