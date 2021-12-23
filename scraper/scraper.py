@@ -67,7 +67,7 @@ for file in txt_files:
 
     for link in urls:
         driver.get(link)
-        time.sleep(11)
+        time.sleep(5)
 
         try:
             name = kinyeres('text-heading-xlarge', by='class')
@@ -82,6 +82,7 @@ for file in txt_files:
             bio = ""
 
         #EXPERIENCE
+        foundExperience = False
         position = ''
         company = ''
         exp_start_date = ''
@@ -106,6 +107,7 @@ for file in txt_files:
                 experience_block = ''
 
         if experience_block != '':
+            foundExperience = True
             try:
                 position = experience_block.find_element(By.CLASS_NAME, 't-16').text
             except:
@@ -151,6 +153,7 @@ for file in txt_files:
 
 
         if experience_block != '':
+            foundExperience = True
             try:
                 position = experience_block.find_element(By.CLASS_NAME, 't-14').find_element(By.CSS_SELECTOR, 'span:nth-child(2)').text
             except:
@@ -177,7 +180,9 @@ for file in txt_files:
         else:
             pass
             
-
+        
+        if not foundExperience:
+            print('nincs tapasztalat')
         
         # STUDY
         
@@ -185,7 +190,7 @@ for file in txt_files:
            uni_block = driver.find_element(By.CLASS_NAME, 'pv-entity__degree-info') 
         except:
             uni_block = ''
-            print('uni block not found', name)
+            print('nincs tanulmany', name)
 
 
         if uni_block != '':
